@@ -11,30 +11,6 @@ export default function Canvas () {
   const [num, setNum] = React.useState(0)
 
   React.useEffect(() => {
-    // const matrix = new Matrix(dim.w, dim.h, factor)
-
-    // function render() {
-    //   const canvas = canvasRef.current
-    //   if (!canvas) throw new Error('Canvas ref is empty')
-
-    //   const ctx = canvas.getContext('2d')
-    //   if (!ctx) throw new Error('Cannot get context')
-
-    //   ctx.clearRect(0, 0, dim.w, dim.h)
-    //   matrix.spawnShape()
-    //   ctx.fillStyle = 'white'
-
-    //   ctx.fillRect(50, 100, 20, 50)
-
-    //   setTimeout(() => {
-    //     requestAnimationFrame(render)
-    //   }, 2000)
-    // }
-
-    // render()
-  }, [dim])
-
-  React.useEffect(() => {
     const matrix = new Matrix(dim.w, dim.h, factor)
     matrix.spawnShape()
     
@@ -52,10 +28,11 @@ export default function Canvas () {
       
       ctx.clearRect(0, 0, dim.w, dim.h)
       matrix.draw(ctx)
+      matrix.move()
 
       setTimeout(() => {
         requestAnimationFrame(render)
-      }, 2000)
+      }, 100)
     }
 
     render()
