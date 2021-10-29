@@ -18,14 +18,28 @@ class Matrix {
 
   spawnShape() {
     // should pick random shame from I, J, L, O, S, T, Z
-    // const pickedShape = pickShape(ShapeArray)
-    const pickedShape = Shape.I
+    const pickedShape = pickShape(ShapeArray)
+    // const pickedShape = Shape.J
     const position = Math.floor(Math.random() * this.width)
     switch (pickedShape) {
       case Shape.I:
         this.addI(position)
         break;
-    
+      case Shape.J:
+        this.addJ(position)
+        break;
+      case Shape.L:
+        this.addL(position)
+        break;
+      case Shape.O:
+        this.addO(position)
+        break;
+      case Shape.S:
+        this.addS(position)
+        break;
+      case Shape.Z:
+        this.addZ(position)
+        break;
       default:
         break;
     }
@@ -72,6 +86,48 @@ class Matrix {
     this.matrix[0][pos + 1] = 1;
     this.matrix[0][pos + 2] = 1;
     this.matrix[0][pos + 3] = 1
+  }
+  addJ(pos: number) {
+    pos = pos + 3 > this.width ? this.width - 3 : pos
+    this.matrix[0][pos] = 1
+    this.matrix[1][pos] = 1
+    this.matrix[1][pos + 1] = 1
+    this.matrix[1][pos + 2] = 1
+  }
+  addL(pos: number) {
+    pos = pos + 3 > this.width ? this.width - 3 : pos
+    this.matrix[1][pos] = 1
+    this.matrix[0][pos] = 1
+    this.matrix[0][pos + 1] = 1
+    this.matrix[0][pos + 2] = 1
+  }
+  addO(pos: number) {
+    pos = pos + 2 > this.width ? this.width - 3 : pos;
+    this.matrix[0][pos] = 1
+    this.matrix[0][pos + 1] = 1;
+    this.matrix[1][pos] = 1;
+    this.matrix[1][pos + 1] = 1;
+  }
+  addS(pos: number) {
+    pos = pos + 3 > this.width ? this.width - 3 : pos;
+    this.matrix[1][pos] = 1;
+    this.matrix[1][pos + 1] = 1;
+    this.matrix[0][pos + 1] = 1;
+    this.matrix[0][pos + 2] = 1;
+  }
+  addZ(pos: number) {
+    pos = pos + 3 > this.width ? this.width - 3 : pos;
+    this.matrix[0][pos] = 1;
+    this.matrix[0][pos + 1] = 1;
+    this.matrix[1][pos + 1] = 1;
+    this.matrix[1][pos + 2] = 1;
+  }
+  addT(pos: number) {
+    pos = pos + 3 > this.width ? this.width - 3 : pos;
+    this.matrix[0][pos] = 1;
+    this.matrix[0][pos + 1] = 1;
+    this.matrix[0][pos + 2] = 1;
+    this.matrix[1][pos + 1] = 1;
   }
 
   draw(ctx: CanvasRenderingContext2D) {
