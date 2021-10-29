@@ -1,7 +1,5 @@
 import checkIfCollideNextMove from "../utils/checkIfCollideNextMove";
 import pickShape from "../utils/pickShape";
-// import Shape from "./Shape"
-import I from "./shapes/I";
 import { ShapeArray, Shape } from "./shapes/ShapeEnum";
 
 class Matrix {
@@ -41,6 +39,9 @@ class Matrix {
         break;
       case Shape.Z:
         this.addZ(position);
+        break;
+      case Shape.T:
+        this.addT(position);
         break;
       default:
         break;
