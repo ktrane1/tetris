@@ -13,7 +13,6 @@ class I {
   constructor(startBlock: number) {
     this.startBlock = startBlock
   }
-
   setUp() {
     // check what start block is determine position
     // for now spawn horizontally

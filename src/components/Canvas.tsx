@@ -8,31 +8,59 @@ export default function Canvas () {
   // w: 10 cells h: 20 cells
   const [factor, setFactor] = React.useState(50)
   const [dim] = React.useState({ w: 500, h: 1000})
+  const [num, setNum] = React.useState(0)
+
+  React.useEffect(() => {
+    // const matrix = new Matrix(dim.w, dim.h, factor)
+
+    // function render() {
+    //   const canvas = canvasRef.current
+    //   if (!canvas) throw new Error('Canvas ref is empty')
+
+    //   const ctx = canvas.getContext('2d')
+    //   if (!ctx) throw new Error('Cannot get context')
+
+    //   ctx.clearRect(0, 0, dim.w, dim.h)
+    //   matrix.spawnShape()
+    //   ctx.fillStyle = 'white'
+
+    //   ctx.fillRect(50, 100, 20, 50)
+
+    //   setTimeout(() => {
+    //     requestAnimationFrame(render)
+    //   }, 2000)
+    // }
+
+    // render()
+  }, [dim])
 
   React.useEffect(() => {
     const matrix = new Matrix(dim.w, dim.h, factor)
-    console.log(matrix)
-
+    matrix.spawnShape()
+    
     function render() {
       const canvas = canvasRef.current
       if (!canvas) throw new Error('Canvas ref is empty')
 
       const ctx = canvas.getContext('2d')
       if (!ctx) throw new Error('Cannot get context')
-
+      // check if matrix has active element
+      if (!matrix.checkActive()) {
+        // if not active element, spawnShape()
+        matrix.spawnShape()
+      }
+      
       ctx.clearRect(0, 0, dim.w, dim.h)
-      Shape.generateShape(dim.w, factor)
-      ctx.fillStyle = 'white'
+      matrix.draw(ctx)
 
-      ctx.fillRect(50, 100, 20, 50)
-
-
-      requestAnimationFrame(render)
+      setTimeout(() => {
+        requestAnimationFrame(render)
+      }, 2000)
     }
 
     render()
-  }, [dim])
-
+  }, [dim.h, dim.w])
+  
   return (
     <>
       <canvas ref={canvasRef} height={`${dim.h}px`} width={`${dim.w}px`} style={{backgroundColor: 'lightgrey'}}></canvas>
