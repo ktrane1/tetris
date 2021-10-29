@@ -6,19 +6,17 @@ import Shape from "../Shape";
  * O
  * O
  * or
- * 0 0 0 0 
+ * 0 0 0 0
  */
 class I {
-  startBlock: number
+  startBlock: number;
   constructor(startBlock: number) {
-    this.startBlock = startBlock
+    this.startBlock = startBlock;
   }
   setUp() {
     // check what start block is determine position
     // for now spawn horizontally
-    
   }
-
 }
 
-export default I
+export default I;
