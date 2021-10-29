@@ -1,6 +1,6 @@
 import React from "react";
 import Matrix from "../classes/Matrix";
-import Shape from "../classes/Shape";
+import keyHandle from "../utils/keyHandle";
 import "./Canvas.css";
 
 export default function Canvas() {
@@ -34,8 +34,8 @@ export default function Canvas() {
         requestAnimationFrame(render);
       }, 100);
     }
-
     render();
+    document.addEventListener("keydown", keyHandle(matrix));
   }, [dim.h, dim.w]);
 
   return (
