@@ -27,7 +27,6 @@ export default function Canvas() {
       ctx.clearRect(0, 0, dim.w, dim.h);
       matrix.shapeDraw();
       matrix.draw(ctx);
-      // matrix.move();
       matrix.shapeMove();
 
       setTimeout(() => {

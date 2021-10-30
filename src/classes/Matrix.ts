@@ -75,11 +75,7 @@ class Matrix {
 
   addI(pos: number) {
     pos = pos + 4 > this.width ? this.width - 4 : pos;
-    this.matrix[0][pos] = 1;
-    this.matrix[0][pos + 1] = 1;
-    this.matrix[0][pos + 2] = 1;
-    this.matrix[0][pos + 3] = 1;
-
+    
     const center = new ShapeCenter(0, pos + 1, Shape.I);
     const child1 = new ShapeChild(0, pos);
     const child2 = new ShapeChild(0, pos + 2);
@@ -105,10 +101,6 @@ class Matrix {
 
   addL(pos: number) {
     pos = pos + 3 > this.width ? this.width - 3 : pos;
-    this.matrix[1][pos] = 1;
-    this.matrix[0][pos] = 1;
-    this.matrix[0][pos + 1] = 1;
-    this.matrix[0][pos + 2] = 1;
 
     const center = new ShapeCenter(0, pos + 1, Shape.L);
     const child1 = new ShapeChild(1, pos);
@@ -122,11 +114,7 @@ class Matrix {
 
   addO(pos: number) {
     pos = pos + 2 > this.width ? this.width - 3 : pos;
-    this.matrix[0][pos] = 1;
-    this.matrix[0][pos + 1] = 1;
-    this.matrix[1][pos] = 1;
-    this.matrix[1][pos + 1] = 1;
-
+ 
     const center = new ShapeCenter(0, pos, Shape.O);
     const child1 = new ShapeChild(0, pos + 1);
     const child2 = new ShapeChild(1, pos);
@@ -139,11 +127,7 @@ class Matrix {
 
   addS(pos: number) {
     pos = pos + 3 > this.width ? this.width - 3 : pos;
-    this.matrix[1][pos] = 1;
-    this.matrix[1][pos + 1] = 1;
-    this.matrix[0][pos + 1] = 1;
-    this.matrix[0][pos + 2] = 1;
-
+   
     const center = new ShapeCenter(1, pos + 1, Shape.S);
     const child1 = new ShapeChild(1, pos);
     const child2 = new ShapeChild(0, pos + 1);
@@ -156,10 +140,6 @@ class Matrix {
 
   addZ(pos: number) {
     pos = pos + 3 > this.width ? this.width - 3 : pos;
-    this.matrix[0][pos] = 1;
-    this.matrix[0][pos + 1] = 1;
-    this.matrix[1][pos + 1] = 1;
-    this.matrix[1][pos + 2] = 1;
 
     const center = new ShapeCenter(0, pos + 1, Shape.Z);
     const child1 = new ShapeChild(0, pos);
@@ -173,10 +153,6 @@ class Matrix {
 
   addT(pos: number) {
     pos = pos + 3 > this.width ? this.width - 3 : pos;
-    this.matrix[0][pos] = 1;
-    this.matrix[0][pos + 1] = 1;
-    this.matrix[0][pos + 2] = 1;
-    this.matrix[1][pos + 1] = 1;
 
     const center = new ShapeCenter(0, pos + 1, Shape.T);
     const child1 = new ShapeChild(0, pos);
@@ -225,16 +201,6 @@ class Matrix {
     parent.children.forEach((child) => {
       this.matrix[child.row][child.col] = 1;
     });
-  }
-
-  checkActive() {
-    // see if matrix contains any values that are 1
-    for (let subarr of this.matrix) {
-      if (subarr.some((val) => val === 1)) {
-        return true;
-      }
-    }
-    return false;
   }
 }
 
