@@ -21,14 +21,19 @@ export default function Canvas() {
       const ctx = canvas.getContext("2d");
       if (!ctx) throw new Error("Cannot get context");
       // check if matrix has active element
-      if (!matrix.checkActive()) {
-        // if not active element, spawnShape()
+      // if (!matrix.checkActive()) {
+      //   // if not active element, spawnShape()
+      //   matrix.spawnShape();
+      // }
+      if (!matrix.activeShape) {
         matrix.spawnShape();
       }
 
       ctx.clearRect(0, 0, dim.w, dim.h);
+      matrix.shapeDraw();
       matrix.draw(ctx);
-      matrix.move();
+      // matrix.move();
+      matrix.shapeMove();
 
       setTimeout(() => {
         requestAnimationFrame(render);
