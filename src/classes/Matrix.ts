@@ -1,4 +1,3 @@
-import checkIfCollideNextMove from "../utils/checkIfCollideNextMove";
 import pickShape from "../utils/pickShape";
 import ShapeCenter from "./shapeCell/ShapeCenter";
 import ShapeChild from "./shapeCell/ShapeChild";
@@ -22,7 +21,7 @@ class Matrix {
 
   spawnShape() {
     // should pick random shame from I, J, L, O, S, T, Z
-    const pickedShape = pickShape([Shape.J]);
+    const pickedShape = pickShape(ShapeArray);
     // const pickedShape = Shape.J
     const position = Math.floor(Math.random() * this.width);
     switch (pickedShape) {
@@ -80,6 +79,15 @@ class Matrix {
     this.matrix[0][pos + 1] = 1;
     this.matrix[0][pos + 2] = 1;
     this.matrix[0][pos + 3] = 1;
+
+    const center = new ShapeCenter(0, pos + 1, Shape.I);
+    const child1 = new ShapeChild(0, pos);
+    const child2 = new ShapeChild(0, pos + 2);
+    const child3 = new ShapeChild(0, pos + 3);
+
+    center.addChildren(child1, child2, child3);
+
+    this.activeShape = center;
   }
 
   addJ(pos: number) {
@@ -101,6 +109,15 @@ class Matrix {
     this.matrix[0][pos] = 1;
     this.matrix[0][pos + 1] = 1;
     this.matrix[0][pos + 2] = 1;
+
+    const center = new ShapeCenter(0, pos + 1, Shape.L);
+    const child1 = new ShapeChild(1, pos);
+    const child2 = new ShapeChild(0, pos);
+    const child3 = new ShapeChild(0, pos + 2);
+
+    center.addChildren(child1, child2, child3);
+
+    this.activeShape = center;
   }
 
   addO(pos: number) {
@@ -109,6 +126,15 @@ class Matrix {
     this.matrix[0][pos + 1] = 1;
     this.matrix[1][pos] = 1;
     this.matrix[1][pos + 1] = 1;
+
+    const center = new ShapeCenter(0, pos, Shape.O);
+    const child1 = new ShapeChild(0, pos + 1);
+    const child2 = new ShapeChild(1, pos);
+    const child3 = new ShapeChild(1, pos + 1);
+
+    center.addChildren(child1, child2, child3);
+
+    this.activeShape = center;
   }
 
   addS(pos: number) {
@@ -117,6 +143,15 @@ class Matrix {
     this.matrix[1][pos + 1] = 1;
     this.matrix[0][pos + 1] = 1;
     this.matrix[0][pos + 2] = 1;
+
+    const center = new ShapeCenter(1, pos + 1, Shape.S);
+    const child1 = new ShapeChild(1, pos);
+    const child2 = new ShapeChild(0, pos + 1);
+    const child3 = new ShapeChild(0, pos + 2);
+
+    center.addChildren(child1, child2, child3);
+
+    this.activeShape = center;
   }
 
   addZ(pos: number) {
@@ -125,6 +160,15 @@ class Matrix {
     this.matrix[0][pos + 1] = 1;
     this.matrix[1][pos + 1] = 1;
     this.matrix[1][pos + 2] = 1;
+
+    const center = new ShapeCenter(0, pos + 1, Shape.Z);
+    const child1 = new ShapeChild(0, pos);
+    const child2 = new ShapeChild(1, pos + 1);
+    const child3 = new ShapeChild(1, pos + 2);
+
+    center.addChildren(child1, child2, child3);
+
+    this.activeShape = center;
   }
 
   addT(pos: number) {
@@ -133,6 +177,15 @@ class Matrix {
     this.matrix[0][pos + 1] = 1;
     this.matrix[0][pos + 2] = 1;
     this.matrix[1][pos + 1] = 1;
+
+    const center = new ShapeCenter(0, pos + 1, Shape.T);
+    const child1 = new ShapeChild(0, pos);
+    const child2 = new ShapeChild(0, pos + 2);
+    const child3 = new ShapeChild(1, pos + 1);
+
+    center.addChildren(child1, child2, child3);
+
+    this.activeShape = center;
   }
 
   draw(ctx: CanvasRenderingContext2D) {

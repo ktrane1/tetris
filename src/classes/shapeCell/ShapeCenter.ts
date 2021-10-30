@@ -1,4 +1,3 @@
-import Matrix from "../Matrix";
 import { Shape } from "../shapes/ShapeEnum";
 import ShapeChild from "./ShapeChild";
 
@@ -74,6 +73,7 @@ export default class ShapeCenter {
 
   rotateLeft() {
     if (this.shapeId === Shape.O) return;
+    if (this.shapeId === Shape.I) return;
     const mapMat = Array(3)
       .fill([])
       .map(() => Array(3).fill(0));
@@ -107,6 +107,7 @@ export default class ShapeCenter {
 
   rotateRight() {
     if (this.shapeId === Shape.O) return;
+    if (this.shapeId === Shape.I) return;
     const mapMat = Array(3)
       .fill([])
       .map(() => Array(3).fill(0));
