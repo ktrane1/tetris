@@ -21,7 +21,7 @@ class Matrix {
 
   spawnShape() {
     // should pick random shame from I, J, L, O, S, T, Z
-    const pickedShape = pickShape([Shape.I]);
+    const pickedShape = pickShape(ShapeArray);
     // const pickedShape = Shape.J
     const position = Math.floor(Math.random() * this.width);
     switch (pickedShape) {
@@ -201,6 +201,29 @@ class Matrix {
     parent.children.forEach((child) => {
       this.matrix[child.row][child.col] = 1;
     });
+  }
+
+  blobCheck() {
+    this.matrix.forEach((row, rowI) => {
+      // if entire row is 2, clear row
+      if (row.every((val) => val === 2)) {
+        this.clearRow(rowI);
+      }
+    });
+  }
+
+  clearRow(startRow: number) {
+    this.matrix[startRow] = Array(this.width).fill(0);
+
+    for (let row = startRow; row >= 1; row -= 1) {
+      for (let col = 0; col < this.height; col += 1) {
+        const topEl = this.matrix[row - 1][col];
+        if (topEl === 2) {
+          this.matrix[row][col] = 2;
+          this.matrix[row - 1][col] = 0;
+        }
+      }
+    }
   }
 }
 

@@ -6,4 +6,5 @@ In the project directory, you can run:
 
 - [ ] boundary checks while rotating
 - [ ] game over check
-- [ ] check blob for complete rows and clear row => shift blob down
+- [x] check blob for complete rows and clear row => shift blob down UPDATE: still buggy
+- [ ] shapeDraw should updatematrix
