@@ -25,6 +25,7 @@ export default function Canvas() {
       }
 
       ctx.clearRect(0, 0, dim.w, dim.h);
+      matrix.blobCheck();
       matrix.shapeDraw();
       matrix.draw(ctx);
       matrix.shapeMove();
