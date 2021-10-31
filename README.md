@@ -4,6 +4,6 @@ In the project directory, you can run:
 
 #### TODO:
 
-- [] boundary checks while rotating
-- [] game over check
-- [] check blob for complete rows and clear row => shift blob down
+- [ ] boundary checks while rotating
+- [ ] game over check
+- [ ] check blob for complete rows and clear row => shift blob down
