@@ -21,7 +21,7 @@ class Matrix {
 
   spawnShape() {
     // should pick random shame from I, J, L, O, S, T, Z
-    const pickedShape = pickShape(ShapeArray);
+    const pickedShape = pickShape([Shape.I]);
     // const pickedShape = Shape.J
     const position = Math.floor(Math.random() * this.width);
     switch (pickedShape) {
@@ -75,9 +75,9 @@ class Matrix {
 
   addI(pos: number) {
     pos = pos + 4 > this.width ? this.width - 4 : pos;
-    
-    const center = new ShapeCenter(0, pos + 1, Shape.I);
-    const child1 = new ShapeChild(0, pos);
+
+    const center = new ShapeCenter(0, pos, Shape.I);
+    const child1 = new ShapeChild(0, pos + 1);
     const child2 = new ShapeChild(0, pos + 2);
     const child3 = new ShapeChild(0, pos + 3);
 
@@ -114,7 +114,7 @@ class Matrix {
 
   addO(pos: number) {
     pos = pos + 2 > this.width ? this.width - 3 : pos;
- 
+
     const center = new ShapeCenter(0, pos, Shape.O);
     const child1 = new ShapeChild(0, pos + 1);
     const child2 = new ShapeChild(1, pos);
@@ -127,7 +127,7 @@ class Matrix {
 
   addS(pos: number) {
     pos = pos + 3 > this.width ? this.width - 3 : pos;
-   
+
     const center = new ShapeCenter(1, pos + 1, Shape.S);
     const child1 = new ShapeChild(1, pos);
     const child2 = new ShapeChild(0, pos + 1);

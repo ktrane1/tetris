@@ -73,7 +73,10 @@ export default class ShapeCenter {
 
   rotateLeft() {
     if (this.shapeId === Shape.O) return;
-    if (this.shapeId === Shape.I) return;
+    if (this.shapeId === Shape.I) {
+      this._IrotateLeft();
+      return;
+    }
     const mapMat = Array(3)
       .fill([])
       .map(() => Array(3).fill(0));
@@ -107,7 +110,11 @@ export default class ShapeCenter {
 
   rotateRight() {
     if (this.shapeId === Shape.O) return;
-    if (this.shapeId === Shape.I) return;
+    // if (this.shapeId === Shape.I) return;
+    if (this.shapeId === Shape.I) {
+      this._IrotateRight();
+      return;
+    }
     const mapMat = Array(3)
       .fill([])
       .map(() => Array(3).fill(0));
@@ -137,5 +144,51 @@ export default class ShapeCenter {
         }
       });
     });
+  }
+
+  _IrotateRight() {
+    const vertical = this.col === this.children[0].col ? true : false;
+    if (!vertical) {
+      const newCol = this.children[1].col;
+      this.row -= 1;
+      this.col += 2;
+      this.removeChildren();
+      const child1 = new ShapeChild(this.row + 1, newCol);
+      const child2 = new ShapeChild(this.row + 2, newCol);
+      const child3 = new ShapeChild(this.row + 3, newCol);
+      this.addChildren(child1, child2, child3);
+    } else {
+      const newRow = this.children[0].row;
+      this.row += 1;
+      this.col -= 2;
+      this.removeChildren();
+      const child1 = new ShapeChild(newRow, this.col + 1);
+      const child2 = new ShapeChild(newRow, this.col + 2);
+      const child3 = new ShapeChild(newRow, this.col + 3);
+      this.addChildren(child1, child2, child3);
+    }
+  }
+
+  _IrotateLeft() {
+    const vertical = this.col === this.children[0].col ? true : false;
+    if (!vertical) {
+      const newCol = this.children[0].col;
+      this.row -= 1;
+      this.col += 1;
+      this.removeChildren();
+      const child1 = new ShapeChild(this.row + 1, newCol);
+      const child2 = new ShapeChild(this.row + 2, newCol);
+      const child3 = new ShapeChild(this.row + 3, newCol);
+      this.addChildren(child1, child2, child3);
+    } else {
+      const newRow = this.children[0].row;
+      this.row += 1;
+      this.col -= 2;
+      this.removeChildren();
+      const child1 = new ShapeChild(newRow, this.col + 1);
+      const child2 = new ShapeChild(newRow, this.col + 2);
+      const child3 = new ShapeChild(newRow, this.col + 3);
+      this.addChildren(child1, child2, child3);
+    }
   }
 }
