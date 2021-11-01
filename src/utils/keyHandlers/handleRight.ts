@@ -1,5 +1,4 @@
 import Matrix from "../../classes/Matrix";
-import generateCoords from "./generateCoords";
 
 export default function handleRight(m: Matrix) {
   const parent = m.activeShape;

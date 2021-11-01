@@ -36,6 +36,7 @@ export default function Canvas() {
     }
     render();
     document.addEventListener("keydown", keyHandle(matrix));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dim.h, dim.w]);
 
   return (
